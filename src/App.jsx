@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default class App extends React.Component {
+export default React.createClass({
 	render() {
 		return (
-			<div>
-				<h1>Hello world!</h1>
+			<div id="app">
+				{this.props.children}
 			</div>
-		);
+		)
 	}
-}
+})
