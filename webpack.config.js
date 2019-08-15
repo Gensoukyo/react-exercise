@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     mode: process.env.NODE_ENV,
@@ -23,7 +24,7 @@ module.exports = {
         splitChunks: {
             cacheGroups: {
                 vendor: {
-                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                    test: /[\\/]node_modules[\\/]/,
                     name: 'vendor',
                     chunks: 'all'
                 },
@@ -33,6 +34,9 @@ module.exports = {
                     minChunks: 2
                 }
             }
+        },
+        runtimeChunk: {
+            name: 'manifest'
         }
     },
     module: {
@@ -42,13 +46,32 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        plugins: ['@babel/plugin-syntax-dynamic-import']
                     }
                 }
             },
             {
-                test: /\.(sc|c)ss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                // For pure CSS (without CSS modules)
+                test: /\.css$/i,
+                exclude: /\.module\.css$/i,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.module\.(sc|c)ss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]__[local]___[hash:base64:5]'
+                            }
+                        }
+                    },
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.(jpg|jpeg|svg|png|gif)$/,
@@ -63,7 +86,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new BundleAnalyzerPlugin(),
+        //new BundleAnalyzerPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Just Build!',
