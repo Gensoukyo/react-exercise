@@ -6,6 +6,7 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     mode: process.env.NODE_ENV,
+    devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         port: 3000,

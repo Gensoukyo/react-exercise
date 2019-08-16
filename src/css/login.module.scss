@@ -1,9 +1,81 @@
+$BtnBgc: #25c6ff;
+$formWidth: 300px;
+$loginBgc: #6d7084;
+$signBgc: #25c6ff;
+
 .signForm {
-    margin: 20vh auto 0;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.92);
-    width: 363px;
-    padding: 50px 0;
-    border-radius: 4px;
-    font-size: 16px;
+	margin: 20vh auto 0;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.92);
+	width: 363px;
+	padding: 50px 0;
+	border-radius: 4px;
+	font-size: 16px;
+}
+.signHead {
+	color: #757c80;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.toggleBtn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	line-height: 40px;
+	font-size: 12px;
+	padding: 0 12px;
+	border-radius: 4px;
+}
+
+.toggleBtn.login {
+	color: #fff;
+	background: $loginBgc;
+}
+
+.toggleBtn.signup {
+	color: #fff;
+	background: $signBgc;
+}
+
+.signBody {
+	font-size: 16px;
+}
+
+.inputField {
+	width: $formWidth;
+	padding: 0;
+	margin: 0 auto;
+	background: #fff;
+	border-radius: 4px;
+	border: 1px solid #dfebf2;
+}
+.inputField input {
+	display: block;
+	width: $formWidth - 10px;
+	height: 2.5em;
+	line-height: 2.5em;
+	margin: 0;
+	padding: 0 0 0 10px;
+	font-size: 16px;
+	color: #000;
+}
+
+.inputField:focus-within {
+
+}
+
+.signupFormSubmit {
+	display: block;
+	margin: 8px auto;
+	width: $formWidth;
+	height: 2.5em;
+	line-height: 2.5em;
+	color: #fff;
+	font-size: inherit;
+	font-weight: 700;
+	text-align: center;
+	border-radius: 4px;
+	background: $BtnBgc;
+	cursor: pointer;
 }

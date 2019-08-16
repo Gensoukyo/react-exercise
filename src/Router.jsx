@@ -1,6 +1,6 @@
 import React from 'react'
 import Loadable from 'react-loadable'
-import { Redirect } from 'react-router-dom'
+import { BrowserRouter, Redirect } from 'react-router-dom'
 
 // import Home from './pages/Home.jsx'
 // import Login from './pages/Login.jsx'
@@ -17,25 +17,27 @@ function loadable(filename) {
 
 
 function requireAuth(Layout, path = '/login') {
-    window.sessionStorage.getItem('uerId') ?
-        (<Layout />) :
-        (<Redirect to={path} />)
+    return window.sessionStorage.getItem('uerId') ?
+        loadable(Layout) :
+        () => (<Redirect to={path} />)
 }
 
 const routes = [
 	{
 		path: '/',
 		exact: true,
-		component: requireAuth(loadable('Home'))
+		component: window.sessionStorage.getItem('uerId')
+            ?loadable('Home')
+            :loadable('Login')
 	},
-    { 
+    {
     	path: '/home',
-    	component: requireAuth(loadable('Home'))
+    	component: requireAuth('Home')
     },
 	{
 		path: '/(login|signup)',
 		component: window.sessionStorage.getItem('uerId')
-			?(<Redirect to='/home' />)
+			?() => (<Redirect to='/home' />)
 			:loadable('Login')
 	},
     {
@@ -44,7 +46,7 @@ const routes = [
     },
     {
     	path: '/user',
-    	component: requireAuth(loadable('User'))
+    	component: requireAuth('User')
     },
     {
     	path: '/(search|tag)',

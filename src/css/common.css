@@ -6,4 +6,48 @@ a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, d
     font-weight: inherit;
     font-style: inherit;
     font-family: inherit;
+    font-size: inherit;
+}
+
+body {
+	font-family: Arial;
+}
+
+a {
+	text-decoration: none;
+}
+
+input, button, textarea {
+    border: none;
+	outline: none;
+}
+
+.header {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.logo {
+	display: inline-block;
+	flex: none;
+    width: 82px;
+    height: 32px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #ccc;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #ccc;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #ccc;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #ccc;
 }
