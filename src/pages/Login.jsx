@@ -11,7 +11,7 @@ export default class Login extends React.Component {
 			isSignup = path.includes('signup'),
 			isInit = !isLogin && !isSignup;
 		const jmpPath = isLogin&&'/signup' || isSignup&&'/login',
-			jmpName = isLogin&&'立即注册' || isSignup&&'立即登录';
+			jmpName = isLogin&&'立即注册' || isSignup&&'登录';
 
 		this.state = {
 			isLogin,
@@ -21,14 +21,31 @@ export default class Login extends React.Component {
 			jmpName,
 
 			username: '',
-			password: ''
+			password: '',
+
+			globalStyle: null
 		};
 
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentDidMount() {
-		console.log(this.props);
+		const params = {
+			w: document.documentElement.scrollWidth,
+			h: document.documentElement.scrollHeight
+		}
+		this.$axios.getRandomImg({ params })
+			.then(data => {
+				if (data.success) {
+					const globalStyle = {
+						height: params.h + 'px',
+						background: `url(${data.data})`,
+						backgroundSize: 'cover'
+					}
+					this.setState({globalStyle});
+				}
+			})
 	}
 
 	handleChange(type, e) {
@@ -37,9 +54,29 @@ export default class Login extends React.Component {
 	    this.setState(input);
 	}
 
+	handleSubmit(type) {
+		if (this.state.isInit) {
+			window.location.replace('/'+type.toLowerCase());
+		} else {
+			this.submit(type)
+		}
+	}
+
+	submit(type) {
+		this.$axios[`post${type}`]({
+			username: this.state.username,
+			password: this.state.password
+		}).then(data => {
+			if (data.success) {
+				window.sessionStorage.setItem('userId', data.data.uid);
+				window.location.href = '/home';
+			}
+		})
+	}
+
 	render() {
 		return (
-			<div>
+			<div style={ this.state.globalStyle }>
 				<header className="header">
 					{ this.state.isInit &&
 						<h1 className="logo">Pix</h1>
@@ -52,13 +89,14 @@ export default class Login extends React.Component {
 				</header>
 				<main className={styles.signForm}>
 					<div className={styles.signHead}>
-						<h1>Pix</h1>
+						<h1 className={styles.signHeadTitle}>Pix</h1>
+						<span>oOps! Let's enjoy the pictrues</span>
 					</div>
 					<div className={styles.signBody}>
 						{!this.state.isInit &&
 							<form action="" className={styles.inputFieldGroup}>
 								<div className={styles.inputField}>
-									<input type="text" autoComplete="username" placeholder={ '邮箱地址' + (this.state.isSignup? '/ID':'')} autoCapitalize="off"
+									<input type="text" autoComplete="username" placeholder={ '邮箱地址' + (this.state.isLogin? '/ID':'')} autoCapitalize="off"
 										value={this.state.username}
 										onChange={this.handleChange.bind(this, 'username')}
 									/>
@@ -71,11 +109,18 @@ export default class Login extends React.Component {
 								</div>
 							</form>
 						}
-						{!this.state.isSignup &&
-							<button type="submit" className={styles.signupFormSubmit}>立即注册</button>
-						}
 						{!this.state.isLogin &&
-							<button type="submit" className={styles.signupFormSubmit}>登录</button>
+							<button
+								className={styles.signupFormSubmit}
+								onClick={this.handleSubmit.bind(this, 'Signup')}
+							>立即注册</button>
+						}
+						{!this.state.isSignup &&
+							<button 
+								className={styles.signupFormSubmit}
+								onClick={this.handleSubmit.bind(this, 'Login')}
+							>登录</button>
+							
 						}
 					</div>
 				</main>

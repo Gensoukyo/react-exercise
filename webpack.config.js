@@ -12,7 +12,13 @@ module.exports = {
         port: 3000,
         hot: true,
         historyApiFallback: true,
-        open: 'Chrome'
+        open: 'Chrome',
+        proxy: {
+            '/api': {
+                target: 'https://easy-mock.com/mock/5d576db624a5a867559d4ecd',
+                secure: false
+            }
+        }
     },
     entry: {
         main: './src/index.js'

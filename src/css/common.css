@@ -37,17 +37,20 @@ input, button, textarea {
 	flex: none;
     width: 82px;
     height: 32px;
+    line-height: 32px;
+    font-size: 32px;
+    text-align: center;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #ccc;
+    color: #ccc;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #ccc;
+   color: #ccc;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #ccc;
+   color: #ccc;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #ccc;
+   color: #ccc;
 }

@@ -17,7 +17,7 @@ function loadable(filename) {
 
 
 function requireAuth(Layout, path = '/login') {
-    return window.sessionStorage.getItem('uerId') ?
+    return window.sessionStorage.getItem('userId') ?
         loadable(Layout) :
         () => (<Redirect to={path} />)
 }
@@ -26,7 +26,7 @@ const routes = [
 	{
 		path: '/',
 		exact: true,
-		component: window.sessionStorage.getItem('uerId')
+		component: window.sessionStorage.getItem('userId')
             ?loadable('Home')
             :loadable('Login')
 	},
@@ -36,7 +36,7 @@ const routes = [
     },
 	{
 		path: '/(login|signup)',
-		component: window.sessionStorage.getItem('uerId')
+		component: window.sessionStorage.getItem('userId')
 			?() => (<Redirect to='/home' />)
 			:loadable('Login')
 	},
