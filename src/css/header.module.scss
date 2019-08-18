@@ -1,0 +1,83 @@
+$WIDTH: 1024px;
+$btnGgc: #becad7;
+$itemHoverBgc: #f2f4f6;
+
+.header {
+	background: #fff;
+	padding: 16px 0;
+
+	&Layout {
+		position: relative;
+		width: $WIDTH;
+		margin: auto;
+	}
+}
+
+.logo {
+	display: block;
+	text-align: left;
+	margin-bottom: 12px;
+}
+
+.drop {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0 12px;
+    line-height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover &List, &List:hover {
+    	display: block;
+    }
+
+    &List {
+    	display: none;
+    	position: absolute;
+    	top: 32px;
+    	right: 0;
+    	z-index: 1;
+    	width: 120px;
+    	border: 1px solid $btnGgc;
+    	background: #fff;
+    }
+
+    &Item {
+    	line-height: 24px;
+    	padding-left: 10px;
+
+    	&:hover {
+    		background: $itemHoverBgc;
+    	}
+    }
+}
+
+.navList, .menus {
+	display: inline-block;
+	line-height: 28px;
+	padding: 0;
+}
+
+.menus li {
+	display: inline-block;
+	line-height: 24px;
+	margin-right: 16px;
+	vertical-align: bottom;
+}
+
+.menus i {
+	vertical-align: sub;
+	color: #e4e7ee;
+	font-size: 24px;
+}
+
+.menus .navActive {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.searchBar {
+	position: absolute;
+	right: 0;
+}

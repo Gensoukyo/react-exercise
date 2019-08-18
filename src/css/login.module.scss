@@ -18,7 +18,8 @@ $signBgc: #25c6ff;
 	margin-bottom: 40px;
 
 	&Title {
-		font-size: 40px;;
+		font-size: 70px;
+		color: #009cff;
 	}
 }
 
@@ -30,16 +31,6 @@ $signBgc: #25c6ff;
 	font-size: 12px;
 	padding: 0 12px;
 	border-radius: 4px;
-}
-
-.toggleBtn.login {
-	color: #fff;
-	background: $loginBgc;
-}
-
-.toggleBtn.signup {
-	color: #fff;
-	background: $signBgc;
 }
 
 .signBody {
@@ -66,10 +57,10 @@ $signBgc: #25c6ff;
 }
 
 .inputField:focus-within {
-
+	box-shadow: 0 0 1px 1px highlight;
 }
 
-.signupFormSubmit {
+.signFormSubmit {
 	display: block;
 	margin: 8px auto;
 	width: $formWidth;
@@ -82,4 +73,14 @@ $signBgc: #25c6ff;
 	border-radius: 4px;
 	background: $BtnBgc;
 	cursor: pointer;
+}
+
+.login {
+	color: #fff;
+	background: $loginBgc;
+}
+
+.signup {
+	color: #fff;
+	background: $signBgc;
 }

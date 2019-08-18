@@ -31,6 +31,11 @@ export default class Login extends React.Component {
 	}
 
 	componentDidMount() {
+		// 设置title
+		document.title = this.state.isInit
+			?'欢迎'
+			:this.state.isLogin&&'登录' || this.state.isSignup&&'注册';
+		// 设置背景图片
 		const params = {
 			w: document.documentElement.scrollWidth,
 			h: document.documentElement.scrollHeight
@@ -60,6 +65,7 @@ export default class Login extends React.Component {
 		} else {
 			this.submit(type)
 		}
+		return false;
 	}
 
 	submit(type) {
@@ -68,7 +74,7 @@ export default class Login extends React.Component {
 			password: this.state.password
 		}).then(data => {
 			if (data.success) {
-				window.sessionStorage.setItem('userId', data.data.uid);
+				window.sessionStorage.setItem('user', JSON.stringify(data.data));
 				window.location.href = '/home';
 			}
 		})
@@ -82,7 +88,7 @@ export default class Login extends React.Component {
 						<h1 className="logo">Pix</h1>
 					}
 					{ !this.state.isInit &&
-						<a className={ styles.toggleBtn +' '+ styles[this.props.location.pathname.replace(/\W/,'')] }
+						<a className={ styles.toggleBtn +' '+ styles[this.state.jmpPath.replace(/\W/,'')] }
 							href={ this.state.jmpPath }
 						>{ this.state.jmpName }</a>
 					}
@@ -94,7 +100,9 @@ export default class Login extends React.Component {
 					</div>
 					<div className={styles.signBody}>
 						{!this.state.isInit &&
-							<form action="" className={styles.inputFieldGroup}>
+							<form className={styles.inputFieldGroup}
+								onSubmit={ this.handleSubmit }
+							>
 								<div className={styles.inputField}>
 									<input type="text" autoComplete="username" placeholder={ '邮箱地址' + (this.state.isLogin? '/ID':'')} autoCapitalize="off"
 										value={this.state.username}
@@ -111,14 +119,14 @@ export default class Login extends React.Component {
 						}
 						{!this.state.isLogin &&
 							<button
-								className={styles.signupFormSubmit}
-								onClick={this.handleSubmit.bind(this, 'Signup')}
+								className={styles.signFormSubmit + ' ' + styles.signup}
+								onClick={ this.handleSubmit.bind(this, 'Signup') }
 							>立即注册</button>
 						}
 						{!this.state.isSignup &&
 							<button 
-								className={styles.signupFormSubmit}
-								onClick={this.handleSubmit.bind(this, 'Login')}
+								className={styles.signFormSubmit + ' ' + styles.login}
+								onClick={ this.handleSubmit.bind(this, 'Login') }
 							>登录</button>
 							
 						}

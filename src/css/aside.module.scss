@@ -1,0 +1,47 @@
+$sideWidth: 215px;
+$avatarSize: 40px;
+
+.side {
+	display: inline-block;
+	width: $sideWidth;
+	border: 1px solid #d6dee5;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.user {
+	display: flex;
+    align-items: center;
+    margin: 10px 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.img {
+	width: $avatarSize;
+	height: $avatarSize;
+	border-radius: 50%;
+}
+
+.name {
+	display: inline-block;
+	line-height: 40px;
+	margin-left: 10px;
+	color: #333;
+    font-size: 13px;
+}
+
+.item {
+	line-height: 13px;
+	font-size: 13px;
+    padding: 10px 8px;
+    cursor: pointer;
+
+    &:hover {
+    	background: #f2f4f6;
+    }
+
+    & a {
+    	display: block;
+    }
+}

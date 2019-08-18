@@ -5,7 +5,8 @@ const baseUrl = '/api'
 const config = {
 	postLogin: '/login',
 	postSignup: '/signup',
-	getRandomImg: '/random_img'
+	getRandomImg: '/random_img',
+	getSearch: '/search'
 }
 
 for (let [name, path] of Object.entries(config)) {

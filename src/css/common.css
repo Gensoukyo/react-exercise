@@ -10,11 +10,18 @@ a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, d
 }
 
 body {
+    color: #464a4d;
 	font-family: Arial;
+    background-color: #eee;
 }
 
 a {
+    color: #258fb8;
 	text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
 }
 
 input, button, textarea {
@@ -40,6 +47,16 @@ input, button, textarea {
     line-height: 32px;
     font-size: 32px;
     text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.textOverflow {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
