@@ -63,7 +63,7 @@ export default class searchBar extends React.Component {
 				style={ {width: this.props.width } }
 			>
 				<form className={ styles.bar }
-					onSubmit={ this.handleSubmit }
+					onSubmit={ this.handleSearch }
 				>
 					<input type="text" id="keyword" name="word" value={ this.state.keyword } placeholder="搜索" autoComplete="off"
 						onChange={ this.handleChange }

@@ -1,0 +1,55 @@
+$iconColor: #e4e7ee;
+
+.card {
+	display: inline-block;
+	text-align: center;
+}
+
+.link {
+	position: relative;
+	display: block;
+	float: left;
+	overflow: hidden;
+
+	& i {
+		position: absolute;
+		right: 5px;
+		bottom: 5px;
+		font-size: 20px;
+		color: $iconColor;
+
+		&:hover {
+			color: #ccc;
+		}
+	}
+}
+
+.img {
+	width: 100%;
+	height: auto;
+}
+
+.nameWraper {
+	display: inline-block;
+	line-height: 18px;
+	font-size: 13px;
+	text-align: center;
+}
+
+.name {
+	@extend .nameWraper;
+
+	&by {
+		vertical-align: top;
+		margin-right: 5px;
+		color: #464a4d;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.firstName {
+	margin-top: 10px;
+}

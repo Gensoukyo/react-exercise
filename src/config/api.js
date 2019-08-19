@@ -6,7 +6,11 @@ const config = {
 	postLogin: '/login',
 	postSignup: '/signup',
 	getRandomImg: '/random_img',
-	getSearch: '/search'
+	getSearch: '/search',
+	getRecommendPicList: '/recommend/pic',
+	getRankPicList: '/rank/pic',
+
+	postUserFav: '/user/fav'
 }
 
 for (let [name, path] of Object.entries(config)) {

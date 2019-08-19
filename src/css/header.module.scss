@@ -1,6 +1,7 @@
 $WIDTH: 1024px;
 $btnGgc: #becad7;
 $itemHoverBgc: #f2f4f6;
+$iconColor: #e4e7ee;
 
 .header {
 	background: #fff;
@@ -41,6 +42,7 @@ $itemHoverBgc: #f2f4f6;
     	width: 120px;
     	border: 1px solid $btnGgc;
     	background: #fff;
+	    border-radius: 3px;
     }
 
     &Item {
@@ -68,8 +70,12 @@ $itemHoverBgc: #f2f4f6;
 
 .menus i {
 	vertical-align: sub;
-	color: #e4e7ee;
+	color: $iconColor;
 	font-size: 24px;
+
+	&:hover {
+		color: #ccc;
+	}
 }
 
 .menus .navActive {

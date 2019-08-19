@@ -11,7 +11,8 @@ export default class Login extends React.Component {
 			isSignup = path.includes('signup'),
 			isInit = !isLogin && !isSignup;
 		const jmpPath = isLogin&&'/signup' || isSignup&&'/login',
-			jmpName = isLogin&&'立即注册' || isSignup&&'登录';
+			jmpName = isLogin&&'立即注册' || isSignup&&'登录',
+			submitType = isLogin&&'Login' || isSignup&&'Signup';
 
 		this.state = {
 			isLogin,
@@ -19,6 +20,7 @@ export default class Login extends React.Component {
 			isInit,
 			jmpPath,
 			jmpName,
+			submitType,
 
 			username: '',
 			password: '',
@@ -60,6 +62,7 @@ export default class Login extends React.Component {
 	}
 
 	handleSubmit(type) {
+		type = type || this.state.submitType;
 		if (this.state.isInit) {
 			window.location.replace('/'+type.toLowerCase());
 		} else {
@@ -101,7 +104,7 @@ export default class Login extends React.Component {
 					<div className={styles.signBody}>
 						{!this.state.isInit &&
 							<form className={styles.inputFieldGroup}
-								onSubmit={ this.handleSubmit }
+								onKeyUp={ (e) => e.keyCode === 13 && this.handleSubmit() }
 							>
 								<div className={styles.inputField}>
 									<input type="text" autoComplete="username" placeholder={ '邮箱地址' + (this.state.isLogin? '/ID':'')} autoCapitalize="off"

@@ -1,9 +1,12 @@
 $sideWidth: 215px;
 $avatarSize: 40px;
 
-.side {
+.wraper {
 	display: inline-block;
 	width: $sideWidth;
+}
+
+.side {
 	border: 1px solid #d6dee5;
 	border-radius: 5px;
 	background-color: #fff;
@@ -44,4 +47,10 @@ $avatarSize: 40px;
     & a {
     	display: block;
     }
+}
+
+.title {
+	display: block;
+    font-size: 16px;
+    margin: 0 0 6px 6px;
 }
