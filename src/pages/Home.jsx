@@ -25,5 +25,6 @@ export default class Home extends React.Component {
 
 	componentDidMount() {
 		document.title = 'Pix';
+		console.log(this.props);
 	}
 }

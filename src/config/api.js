@@ -8,6 +8,8 @@ const config = {
 	getRandomImg: '/random_img',
 	getSearch: '/search',
 	getRecommendPicList: '/recommend/pic',
+	getFreshPicList: '/recommend/pic?limit=8',
+	getSpecialPicList: '/recommend/collection',
 	getRankPicList: '/rank/pic',
 
 	postUserFav: '/user/fav'

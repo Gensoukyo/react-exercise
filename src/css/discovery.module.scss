@@ -1,0 +1,17 @@
+$WIDTH: 1024px;
+
+.wraper {
+	width: $WIDTH;
+}
+
+.container {
+	display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+	margin: 0 0 10px;
+	padding: 12px 10px;
+	background-color: #fff;
+	border: 1px solid #d6dee5;
+	border-radius: 5px;
+	overflow: hidden;
+}

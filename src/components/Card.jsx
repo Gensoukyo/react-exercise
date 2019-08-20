@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import styles from '../css/card.module.css'
 
 export default class Card extends React.Component {
+	static propTypes = {
+		wraperWidth: PropTypes.number,
+		imgWidth: PropTypes.number
+	};
+
 	constructor(props) {
 		super(props);
 
@@ -11,10 +17,13 @@ export default class Card extends React.Component {
 			width: this.props.wraperWidth+'px'
 		}
 		const imgStyle = this.props.imgWidth && {
-			width: this.props.imgWidth+'px'
+			width: this.props.imgWidth+'px',
+			marginRight: '8px'
 		}
 		const nameStyle = imgStyle? {
-			width: (this.props.wraperWidth - this.props.imgWidth) + 'px'
+			width: (this.props.wraperWidth - this.props.imgWidth -8) + 'px',
+			textAlign: 'left',
+			boxSizing: 'border-box'
 		}:{
 			width: '100%'
 		}
@@ -72,6 +81,9 @@ export default class Card extends React.Component {
 						className={ styles.name + ' textOverflow' }
 					> { this.props.author } </Link>
 				</div>
+				{ this.state.imgStyle &&
+					<span className={ styles.rank }>{ this.props.index + 1 }</span>
+				}
 			</div>
 		);
 	}

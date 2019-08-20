@@ -1,0 +1,22 @@
+$Width: 372px;
+.collectionLink {
+	display: block;
+	width: $Width;
+	overflow: hidden;
+}
+
+.collectionImg {
+	width: 100%;
+	border-radius: 4px;
+}
+
+.collectionName {
+	font-size: 13px;
+	color: #333;
+	text-align: center;
+    margin: 5px;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

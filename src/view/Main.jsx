@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from '../components/Card.jsx'
+import DCard from '../components/DCard.jsx'
 import styles from '../css/main.module.scss'
 
 export default class Main extends React.Component {
@@ -10,15 +11,34 @@ export default class Main extends React.Component {
 		this.state = {
 			announce: '',
 
-			picList: []
+			recommendPicList: [],
+			freshPicList: [],
+			specialPicList: [],
 		}
 	}
 
 	componentDidMount() {
+		// 推荐图片
 		this.$axios.getRecommendPicList().then(data => {
 			if (data.success) {
 				this.setState({
-					picList: data.data
+					recommendPicList: data.data
+				});
+			}
+		})
+		// 最新图片
+		this.$axios.getFreshPicList().then(data => {
+			if (data.success) {
+				this.setState({
+					freshPicList: data.data
+				});
+			}
+		})
+		// 精选合辑
+		this.$axios.getSpecialPicList().then(data => {
+			if (data.success) {
+				this.setState({
+					specialPicList: data.data
 				});
 			}
 		})
@@ -36,10 +56,34 @@ export default class Main extends React.Component {
 				<ul className={ styles.container }>
 					<li className={ styles.title }>推荐作品</li>
 					{
-						this.state.picList.map(item => {
+						this.state.recommendPicList.map(item => {
 							return (
 								<li className={ styles.item } key={item.pid}>
 									<Card wraperWidth={180} {...item}></Card>
+								</li>
+							)
+						})
+					}
+				</ul>
+				<ul className={ styles.container }>
+					<li className={ styles.title }>最新作品</li>
+					{
+						this.state.freshPicList.map(item => {
+							return (
+								<li className={ styles.item } key={item.pid}>
+									<Card wraperWidth={180} {...item}></Card>
+								</li>
+							)
+						})
+					}
+				</ul>
+				<ul className={ styles.container }>
+					<li className={ styles.title }>精选特辑</li>
+					{
+						this.state.specialPicList.map(item => {
+							return (
+								<li className={ styles.item } key={item.tid}>
+									<DCard {...item}></DCard>
 								</li>
 							)
 						})

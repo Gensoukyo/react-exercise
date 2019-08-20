@@ -1,6 +1,7 @@
 $iconColor: #e4e7ee;
 
 .card {
+	position: relative;
 	display: inline-block;
 	text-align: center;
 }
@@ -9,12 +10,14 @@ $iconColor: #e4e7ee;
 	position: relative;
 	display: block;
 	float: left;
+	line-height: 0;
 	overflow: hidden;
 
 	& i {
 		position: absolute;
 		right: 5px;
 		bottom: 5px;
+		line-height: 20px;
 		font-size: 20px;
 		color: $iconColor;
 
@@ -52,4 +55,15 @@ $iconColor: #e4e7ee;
 
 .firstName {
 	margin-top: 10px;
+}
+
+.rank {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    line-height: 0.6;
+    margin: 0 5px;
+	font-size: 40px;
+    font-weight: bold;
+    color: #c6c6c6;
 }

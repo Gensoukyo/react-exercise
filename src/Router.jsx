@@ -45,6 +45,10 @@ const routes = [
     	component: loadable('Detail')
     },
     {
+        path: '/discovery/:type',
+        component: loadable('Discovery')
+    },
+    {
     	path: '/user',
     	component: requireAuth('User')
     },

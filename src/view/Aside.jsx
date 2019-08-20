@@ -49,10 +49,10 @@ export default class Aside extends React.Component {
 				<ul className={ styles.side }>
 					<li className={ styles.title }>今日排行榜</li>
 					{
-						this.state.picList.map(item => {
+						this.state.picList.map((item, index) => {
 							return (
 								<li className={ styles.item } key={item.pid}>
-									<Card wraperWidth={210} imgWidth={100} {...item}></Card>
+									<Card wraperWidth={197} imgWidth={97} index={index} {...item}></Card>
 								</li>
 							)
 						})
