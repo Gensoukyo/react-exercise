@@ -45,7 +45,7 @@ const routes = [
     	component: loadable('Detail')
     },
     {
-        path: '/discovery/:type',
+        path: '/discovery',
         component: loadable('Discovery')
     },
     {

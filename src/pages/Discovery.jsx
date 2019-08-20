@@ -2,6 +2,7 @@ import React from 'react';
 
 import Card from '../components/Card.jsx'
 import DCard from '../components/DCard.jsx'
+import Pagination from '../components/Pagination.jsx'
 
 import styles from '../css/discovery.module.scss'
 
@@ -25,25 +26,15 @@ export default class Discovery extends React.Component {
 	}
 
 	componentDidMount() {
-		this.$axios.
+
 	}
 
 	render() {
 		return (
 			<div className={ styles.wraper }>
-				<ul>
-					
-				</ul>
+				<Pagination size={12} total={70} start={1} ></Pagination>
 				<ul className={ styles.container }>
-					{
-						this.state.recommendPicList.map(item => {
-							return (
-								<li className={ styles.item } key={item.pid}>
-									<Card wraperWidth={180} {...item}></Card>
-								</li>
-							)
-						})
-					}
+				
 				</ul>
 			</div>
 		);
