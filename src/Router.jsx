@@ -45,7 +45,12 @@ const routes = [
     	component: loadable('Detail')
     },
     {
-        path: '/discovery(/:type)',
+        path: '/discovery/:type',
+        exact: false,
+        component: loadable('Discovery')
+    },
+    {
+        path: '/discovery',
         exact: false,
         component: loadable('Discovery')
     },
