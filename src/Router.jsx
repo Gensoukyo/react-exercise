@@ -45,7 +45,8 @@ const routes = [
     	component: loadable('Detail')
     },
     {
-        path: '/discovery',
+        path: '/discovery(/:type)',
+        exact: false,
         component: loadable('Discovery')
     },
     {

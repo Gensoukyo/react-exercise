@@ -38,6 +38,11 @@ export default class Header extends React.Component {
 									<i className="iconfont i-homepage_fill"></i>首页
 								</NavLink>
 							</li>
+							<li className={ styles.discovery }>
+								<NavLink to="/discovery" activeClassName={ styles.navActive }>
+									<i className="iconfont i-discovery"></i>发现
+								</NavLink>
+							</li>
 							<li styles={ styles.upload }>
 								<NavLink to="/upload" activeClassName={ styles.navActive }>
 									<i className="iconfont i-upload"></i>作品投稿

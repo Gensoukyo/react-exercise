@@ -17,6 +17,7 @@ export default class Card extends React.Component {
 			width: this.props.wraperWidth+'px'
 		}
 		const imgStyle = this.props.imgWidth && {
+			float: 'left',
 			width: this.props.imgWidth+'px',
 			marginRight: '8px'
 		}

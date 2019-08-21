@@ -2,6 +2,7 @@ $WIDTH: 1024px;
 
 .wraper {
 	width: $WIDTH;
+	margin: 10px auto;
 }
 
 .container {
@@ -14,4 +15,39 @@ $WIDTH: 1024px;
 	border: 1px solid #d6dee5;
 	border-radius: 5px;
 	overflow: hidden;
+}
+
+.item {
+	display: inline-block;
+	margin: 12px 24px;
+}
+
+.pagination {
+	margin: 24px auto;
+	text-align: center;
+}
+
+.linkGrounp {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 16px 24px;
+	border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+.link {
+	display: inline-block;
+    padding: 0 16px;
+    color: rgba(0,0,0,.4);
+    font-size: 14px;
+    line-height: 40px;
+    border-radius: 20px;
+    -webkit-transition: background-color .5s;
+    transition: background-color .5s;
+}
+
+.linkActive {
+	color: rgba(0,0,0,.6);
+    background: #eee;
+    cursor: default;
 }

@@ -9,7 +9,6 @@ $iconColor: #e4e7ee;
 .link {
 	position: relative;
 	display: block;
-	float: left;
 	line-height: 0;
 	overflow: hidden;
 

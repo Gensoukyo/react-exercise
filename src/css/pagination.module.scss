@@ -1,9 +1,29 @@
 .list > li {
 	display: inline-block;
-	width: 40px;
-	line-height: 40px;
+	min-width: 28px;
+	line-height: 28px;
+	font-size: 13px;
+	text-align: center;
+
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+
+.item {
+	margin: 0 8px;
+	color: #666;
+	border: 1px solid #d9d9d9;
+	border-radius: 6px;
+	cursor: pointer;
+
+	& i {
+		font-size: 13px;
+	}
 }
 
 .cur {
-	background: #b2b2b2;
+	color: #fff;
+	background: #2db7f5;
 }
