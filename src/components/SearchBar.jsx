@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import styles from '../css/searchBar.module.scss'
 
 export default class searchBar extends React.Component {
+	static propTypes = {
+		width: PropTypes.number,
+		className: PropTypes.string
+	};
+
 	constructor(props) {
 		super(props);
 
@@ -60,7 +66,7 @@ export default class searchBar extends React.Component {
 	render() {
 		return (
 			<div className={ styles.wraper +' '+this.props.className }
-				style={ {width: this.props.width } }
+				style={ {width: this.props.width + 'px' } }
 			>
 				<form className={ styles.bar }
 					onSubmit={ this.handleSearch }

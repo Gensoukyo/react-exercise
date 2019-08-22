@@ -56,7 +56,7 @@ export default class Header extends React.Component {
 							</li>
 						</ul>
 					</nav>
-					<SearchBar width="224px" className={ styles.searchBar }/>
+					<SearchBar width={ 224 } className={ styles.searchBar }/>
 				</div>
 			</header>
 		);

@@ -37,6 +37,7 @@ input, button, textarea {
 	-webkit-align-items: center;
     align-items: center;
     padding: 16px;
+    justify-content: space-between;
 }
 
 .logo {
@@ -51,6 +52,10 @@ input, button, textarea {
 
 .hidden {
     display: none;
+}
+
+.right {
+    float: right;
 }
 
 .textOverflow {

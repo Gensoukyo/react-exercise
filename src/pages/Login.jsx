@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from '../css/login.module.scss'
+import SearchBar from '../components/SearchBar.jsx'
 
 export default class Login extends React.Component {
 	constructor(props) {
@@ -88,7 +89,10 @@ export default class Login extends React.Component {
 			<div style={ this.state.globalStyle }>
 				<header className="header">
 					{ this.state.isInit &&
-						<h1 className="logo">Pix</h1>
+						<React.Fragment>
+							<h1 className="logo">Pix</h1>
+							<SearchBar width={ 300 } className={ styles.right }/>
+						</React.Fragment>
 					}
 					{ !this.state.isInit &&
 						<a className={ styles.toggleBtn +' '+ styles[this.state.jmpPath.replace(/\W/,'')] }

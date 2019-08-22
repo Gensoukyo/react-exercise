@@ -82,8 +82,8 @@ export default class Card extends React.Component {
 						className={ styles.name + ' textOverflow' }
 					> { this.props.author } </Link>
 				</div>
-				{ this.state.imgStyle &&
-					<span className={ styles.rank }>{ this.props.index + 1 }</span>
+				{ this.state.imgStyle && this.props.order &&
+					<span className={ styles.rank }>{ this.props.order }</span>
 				}
 			</div>
 		);

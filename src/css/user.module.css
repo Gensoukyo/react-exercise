@@ -1,0 +1,71 @@
+$bannerHeight: 256px;
+$infoWidth: 800px;
+$avatarSize: 100px;
+$btnBgc: #0096fa;
+
+$lHeight: 32px;
+
+.banner {
+	width: 100%;
+	height: $bannerHeight;
+	overflow: hidden;
+	border-top: 1px solid #d6dee5;
+}
+
+.bannerImg {
+	width: 100%;
+	height: auto;
+}
+
+.wraper {
+	position: relative;
+	width: $infoWidth;
+	margin: 0 auto;
+	height: 88px;
+	overflow: hidden;
+}
+
+.avatar {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: $avatarSize;
+	height: $avatarSize;
+	border-radius: 50%;
+}
+
+.layout {
+	display: flex;
+	line-height: $lHeight;
+	margin: 24px 0;
+	margin-left: $avatarSize + 16px;
+	justify-content: space-between;
+}
+
+.name {
+	display: inline-block;
+	line-height: $lHeight;
+	font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.subBtn {
+	display: inline-block;
+	float: right;
+	width: 200px;
+	color: #fff;
+	line-height: $lHeight;
+    font-size: 14px;
+	border-radius: 16px;
+	background-color: $btnBgc;
+	text-align: center;
+}
+.descWraper {
+	width: $infoWidth - $avatarSize * 2 - 24px;
+	margin: 40px auto;
+}
+
+.desc {
+	line-height: $lHeight;
+}

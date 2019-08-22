@@ -54,9 +54,17 @@ export default class Discovery extends React.Component {
 		this.fetchList();
 	}
 
+	componentDidUpdate(prevProps) {
+	  if (this.props.match.params.type !== prevProps.match.params.type) {
+	    window.location.href = window.location.href;
+	  }
+	}
+
 	onCurrentPageChange(cur) {
 		this.setState({ cur });
-		this.fetchList();
+		this.fetchList().then(() => {
+			window.scrollTo(0, 0);	// 更新数据后滚动至顶部
+		})
 	}
 
 	fetchList() {
@@ -64,7 +72,7 @@ export default class Discovery extends React.Component {
 			page: this.state.cur,
 			limit: this.state.size
 		}
-		this.$axios[this.state.queryUrl]({ params }).then(data => {
+		return this.$axios[this.state.queryUrl]({ params }).then(data => {
 			if (data.success) {
 				this.setState({
 					list: data.data
