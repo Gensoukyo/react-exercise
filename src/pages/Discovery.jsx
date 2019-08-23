@@ -14,7 +14,7 @@ export default class Discovery extends React.Component {
 
 		const types = {
 			recommend:  (item) => (<Card wraperWidth={200} {...item}></Card>),
-			collection: (item) => (<DCard wraperWidth={372} {...item}></DCard>),
+			collection: (item) => (<DCard wraperWidth={372} {...item} link={`/tag?tid=${item.tid}`}></DCard>),
 			rank: (item) => (<Card wraperWidth={372} imgWidth={100} {...item}></Card>)
 		}
 		const queryUrls = {

@@ -6,7 +6,8 @@ import styles from '../css/dCard.module.css'
 
 export default class DCard extends React.Component {
 	static propTypes = {
-		wraperWidth: PropTypes.number
+		wraperWidth: PropTypes.number,
+		link: PropTypes.string
 	};
 
 	constructor(props) {
@@ -23,7 +24,7 @@ export default class DCard extends React.Component {
 
 	render() {
 		return (
-			<Link to={ `/tag${this.props.tid}` }
+			<Link to={ this.props.link }
 				className={ styles.collectionLink }
 				style={ this.state.wraperWidth }
 			>

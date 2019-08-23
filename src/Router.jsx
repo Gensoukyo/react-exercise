@@ -46,17 +46,19 @@ const routes = [
     },
     {
         path: '/discovery/:type',
-        exact: false,
         component: loadable('Discovery')
     },
     {
         path: '/discovery',
-        exact: false,
         component: loadable('Discovery')
     },
     {
-    	path: '/user',
+    	path: '/user/:type',
     	component: requireAuth('User')
+    },
+    {
+        path: '/user',
+        component: requireAuth('User')
     },
     {
     	path: '/(search|tag)',

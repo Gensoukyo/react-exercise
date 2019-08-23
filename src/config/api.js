@@ -11,9 +11,12 @@ const config = {
 	getFreshPicList: '/recommend/pic?limit=8',
 	getSpecialPicList: '/recommend/collection',
 	getRankPicList: '/rank/pic',
-	getTheUser: '/user'
+	getTheUser: '/user',
 
-	postUserFav: '/user/fav'
+	postUserFav: '/user/fav',
+	postUserSub: '/user/sub',
+	postPicListById: '/pic/id',
+	postUserListById: '/user/id'
 }
 
 for (let [name, path] of Object.entries(config)) {

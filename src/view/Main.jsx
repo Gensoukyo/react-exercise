@@ -83,7 +83,7 @@ export default class Main extends React.Component {
 						this.state.specialPicList.map(item => {
 							return (
 								<li className={ styles.item } key={item.tid}>
-									<DCard {...item}></DCard>
+									<DCard {...item} link={ `/tag?tid=${item.tid}` }></DCard>
 								</li>
 							)
 						})
