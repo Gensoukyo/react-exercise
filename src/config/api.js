@@ -11,6 +11,7 @@ const config = {
 	getFreshPicList: '/recommend/pic?limit=8',
 	getSpecialPicList: '/recommend/collection',
 	getRankPicList: '/rank/pic',
+	getTheUser: '/user'
 
 	postUserFav: '/user/fav'
 }

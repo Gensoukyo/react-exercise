@@ -19,16 +19,14 @@ $lHeight: 32px;
 
 .wraper {
 	position: relative;
+	top: -20px;
 	width: $infoWidth;
 	margin: 0 auto;
-	height: 88px;
 	overflow: hidden;
 }
 
 .avatar {
-	position: absolute;
-	left: 0;
-	bottom: 0;
+	float: left;
 	width: $avatarSize;
 	height: $avatarSize;
 	border-radius: 50%;
@@ -37,8 +35,8 @@ $lHeight: 32px;
 .layout {
 	display: flex;
 	line-height: $lHeight;
-	margin: 24px 0;
-	margin-left: $avatarSize + 16px;
+	margin: 40px 0;
+	margin-left: $avatarSize + 20px;
 	justify-content: space-between;
 }
 
@@ -60,10 +58,11 @@ $lHeight: 32px;
 	border-radius: 16px;
 	background-color: $btnBgc;
 	text-align: center;
+	cursor: pointer;
 }
 .descWraper {
 	width: $infoWidth - $avatarSize * 2 - 24px;
-	margin: 40px auto;
+	margin: 0 auto;
 }
 
 .desc {
