@@ -59,7 +59,7 @@ export default class Main extends React.Component {
 						this.state.recommendPicList.map(item => {
 							return (
 								<li className={ styles.item } key={item.pid}>
-									<Card wraperWidth={180} {...item}></Card>
+									<Card wraperWidth={160} {...item}></Card>
 								</li>
 							)
 						})
@@ -71,7 +71,7 @@ export default class Main extends React.Component {
 						this.state.freshPicList.map(item => {
 							return (
 								<li className={ styles.item } key={item.pid}>
-									<Card wraperWidth={180} {...item}></Card>
+									<Card wraperWidth={160} {...item}></Card>
 								</li>
 							)
 						})

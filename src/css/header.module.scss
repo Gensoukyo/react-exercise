@@ -9,8 +9,9 @@ $iconColor: #e4e7ee;
 
 	&Layout {
 		position: relative;
-		width: $WIDTH;
+		max-width: $WIDTH;
 		margin: auto;
+		align-items: center;
 	}
 }
 

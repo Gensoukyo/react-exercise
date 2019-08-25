@@ -3,6 +3,7 @@ $iconColor: #e4e7ee;
 .card {
 	position: relative;
 	display: inline-block;
+	line-height: 0;
 	text-align: center;
 }
 
@@ -28,7 +29,8 @@ $iconColor: #e4e7ee;
 
 .img {
 	width: 100%;
-	height: auto;
+	height: 100%;
+	object-fit: contain;
 }
 
 .nameWraper {

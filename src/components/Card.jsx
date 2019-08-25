@@ -7,22 +7,23 @@ import styles from '../css/card.module.css'
 export default class Card extends React.Component {
 	static propTypes = {
 		wraperWidth: PropTypes.number,
-		imgWidth: PropTypes.number
+		imgSize: PropTypes.number
 	};
 
 	constructor(props) {
 		super(props);
 
 		const wraperStyle = this.props.wraperWidth && {
-			width: this.props.wraperWidth+'px'
+			width: this.props.wraperWidth
 		}
-		const imgStyle = this.props.imgWidth && {
+		const imgStyle = {
 			float: 'left',
-			width: this.props.imgWidth+'px',
-			marginRight: '8px'
+			width: this.props.imgSize || this.props.wraperWidth,
+			height: this.props.imgSize || this.props.wraperWidth,
+			marginRight: 8
 		}
-		const nameStyle = imgStyle? {
-			width: (this.props.wraperWidth - this.props.imgWidth -8) + 'px',
+		const nameStyle = this.props.imgSize? {
+			width: (this.props.wraperWidth - this.props.imgSize -8),
 			textAlign: 'left',
 			boxSizing: 'border-box'
 		}:{
@@ -60,7 +61,11 @@ export default class Card extends React.Component {
 	render() {
 		return (
 			<div className={ styles.card } style={ this.state.wraperStyle }>
-				<Link to={ `/detail?pid=${this.props.pid}` } className={ styles.link }
+				<Link to={{
+					pathname: '/detail',
+				    search: `?pid=${this.props.pid}`,
+				    state: this.props
+				}} className={ styles.link }
 					style={ this.state.imgStyle }
 				>
 					<img src={ this.props.url || this.state.defaultUrl } alt={ this.props.name }
@@ -70,7 +75,11 @@ export default class Card extends React.Component {
 						onClick={ this.handleFav }
 					></i>
 				</Link>
-				<Link to={ `/detail?pid=${this.props.pid}` }
+				<Link to={{
+					pathname: '/detail',
+				    search: `?pid=${this.props.pid}`,
+				    state: this.props
+				}}
 					className={ styles.name +' '+ styles.firstName + ' textOverflow' }
 					style={ this.state.nameStyle }
 				>{ this.props.name }</Link>

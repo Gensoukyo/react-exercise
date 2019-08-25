@@ -16,7 +16,8 @@ const config = {
 	postUserFav: '/user/fav',
 	postUserSub: '/user/sub',
 	postPicListById: '/pic/id',
-	postUserListById: '/user/id'
+	postUserListById: '/user/id',
+	postTagListById: '/tag/id'
 }
 
 for (let [name, path] of Object.entries(config)) {

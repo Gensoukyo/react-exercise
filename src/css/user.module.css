@@ -1,14 +1,16 @@
-$bannerHeight: 256px;
+$WIDTH: 1224px;
+$bannerHeight: 320px;
 $infoWidth: 800px;
 $avatarSize: 100px;
 $btnBgc: #0096fa;
 $hrColor: #d6dee5;
 
+$itemWidth: 200px;
 $lHeight: 32px;
 
 .banner {
 	width: 100%;
-	height: $bannerHeight;
+	max-height: $bannerHeight;
 	overflow: hidden;
 	border-top: 1px solid $hrColor;
 }
@@ -21,7 +23,8 @@ $lHeight: 32px;
 .wraper {
 	position: relative;
 	top: -20px;
-	width: $infoWidth;
+	max-width: $infoWidth;
+	padding: 0 15px;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -39,6 +42,7 @@ $lHeight: 32px;
 	margin: 40px 0;
 	margin-left: $avatarSize + 20px;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .name {
@@ -62,11 +66,64 @@ $lHeight: 32px;
 	cursor: pointer;
 }
 .descWraper {
-	width: $infoWidth - $avatarSize * 2 - 24px;
+	max-width: $infoWidth - $avatarSize * 2 - 24px;
 	margin: 0 auto;
-	border-top: 1px solid $hrColor;
 }
 
 .desc {
 	line-height: $lHeight;
+}
+
+.tabList {
+	margin-top: 30px;
+	border-top: 1px solid $hrColor;
+	text-align: center;
+}
+
+.tabItem {
+	display: inline-block;
+	width: 50px;
+    cursor: pointer;
+}
+
+.link {
+	display: block;
+	line-height: 2 * $lHeight;
+	font-weight: bold;
+    font-size: 16px;
+    color: rgb(173, 173, 173);
+	border-top: 4px solid transparent;
+}
+
+.linkActive {
+	color: #333;
+	border-top: 4px solid rgb(0, 150, 250);
+}
+
+.listWraper {
+	max-width: $WIDTH;
+	margin: 0 auto;
+}
+
+.listContainer {
+	display: none;
+	box-sizing: border-box;
+	width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 0 10px;
+    padding: 12px 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.listActive {
+	display: flex;
+}
+
+.item {
+	display: inline-block;
+	width: $itemWidth;
+	margin: 12px 24px;
 }

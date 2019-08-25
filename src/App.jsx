@@ -9,7 +9,7 @@ import routes from './Router.jsx'
 import './css/common.css'
 
 export default class App extends React.Component {
-    render() {
+	render() {
         return (
 			<Router>
 				<Switch>{

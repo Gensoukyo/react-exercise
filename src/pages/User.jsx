@@ -5,7 +5,6 @@ import styles from '../css/user.module.css'
 import Header from '../view/Header.jsx'
 import Card from '../components/Card.jsx'
 import DCard from '../components/DCard.jsx'
-import MCard from '../components/MCard.jsx'
 
 export default class User extends React.Component {
 	constructor(props) {
@@ -13,7 +12,7 @@ export default class User extends React.Component {
 
 		const mine = JSON.parse(window.sessionStorage.getItem('user'));
 		const linkList = {
-			manage: '首页',
+			upload: '首页',
 			follow: '关注',
 			fav: '收藏'
 		}
@@ -21,38 +20,29 @@ export default class User extends React.Component {
 			...mine,
 			outer: false,
 
-			linkList: linkList,
+			linkList: linkList,	// nav links
 
 			uploadList: [],
 			followList: [],
-			favList: [],
+			favList: []
 		};
 
 		this.fetchTheUser = this.fetchTheUser.bind(this);
+		this.initListOfUser = this.initListOfUser.bind(this);
+		this.fectchList = this.fectchList.bind(this);
 		this.handleSub = this.handleSub.bind(this);
+		this.isParamsActive = this.isParamsActive.bind(this);
 	}
 
-	componentDidMount() {
-		// fetch user info
+	componentDidMount () {
 		const params = new URLSearchParams(this.props.location.search);
 		const uid = params.get('uid');
-		let p;
 
 		if (uid && uid !== this.state.uid) {
-			p = this.fetchTheUser(uid)
+			// 当前页不是本人的个人主页，需要重新获取userinfo
+			return this.fetchTheUser(uid).then(this.initListOfUser);
 		}
-		// fectch lists
-		p.then(() => {
-			this.fectchList('uploadList', 'postPicListById', this.state.uploads);
-			this.fectchList('followList', 'postUserListById', this.state.subs);
-			this.fectchList('favList', 'postPicListById', this.state.favs);
-		})
-
-		/*
-			更新api
-			新增MCard
-			css 及 过渡
-		 */
+		this.initListOfUser();
 	}
 
 	fetchTheUser(uid) {
@@ -68,15 +58,36 @@ export default class User extends React.Component {
 	}
 
 	fectchList(type, method, id) {
-		this.$axios[method]({ id }).then(data => {
+		id = id.toString();
+		return this.$axios[method]({ id }).then(data => {
 			if (data.success) {
 				const state = {};
-				state[type] = data.data;
+				state[type] = this.dealRawData(type, data.data);
 				this.setState(state);
 			}
 		})
 	}
 
+	initListOfUser () {
+		this.state.uploads.length && this.fectchList('uploadList', 'postPicListById', this.state.uploads);
+		this.state.subs.length && this.fectchList('followList', 'postUserListById', this.state.subs);
+		this.state.favs.length && this.fectchList('favList', 'postPicListById', this.state.favs);
+	}
+
+	dealRawData(type, data) {
+		const solve = {
+			followList: () => {
+				data.forEach(u => u.url = u.avatar);
+				// DCard组件必须的prop
+			}
+		}
+		if (type in solve) {
+			solve[type]();
+		}
+		return data;
+	}
+
+	// 在他人主页关注
 	handleSub() {
 		if (!this.state.subed) {
 			const user = JSON.parse(window.sessionStorage.getItem('user'));
@@ -93,8 +104,11 @@ export default class User extends React.Component {
 		}
 	}
 
-	isParamsActive() {
-
+	isParamsActive(type) {
+		if (this.props.match && this.props.match.params.type) {
+			return this.props.match.params.type === type;
+		}
+		return type === Object.keys(this.state.linkList)[0];
 	}
 
 	render() {
@@ -122,30 +136,36 @@ export default class User extends React.Component {
 						<p>个人介绍：{ this.state.desc }</p>
 					</div>
 				</div>
-				<ul>
+				<ul className={ styles.tabList }>
 					{
 						Object.entries(this.state.linkList).map(link => {
 							return (
-								<li>
-									<NavLink to={ `/user/${link[0]}` }
+								<li className={ styles.tabItem } key={ link[0] }>
+									<NavLink to={ `/user/${link[0]}${this.props.location.search}` }
 										className={ styles.link }
 										activeClassName={ styles.linkActive }
-										isActive={ this.isParamsActive }
-										key={ link[0] }
+										isActive={ this.isParamsActive.bind(this, link[0]) }
 									>{ link[1] }</NavLink>
 								</li>
 							)
 						})
 					}
 				</ul>
-				<div>
+				<div className={ styles.listWraper }>
 					{ this.state.uploads.length &&
-						<ul>
+						<ul className={ styles.listContainer +' '+
+							(this.isParamsActive('upload')? styles.listActive:'') }>
 							{
 								this.state.uploadList.map(item => {
 									return (
 										<li className={ styles.item } key={item.pid}>
-											<DCard wraperWidth={372} {...item} link={`/detail?=${item.pid}`}></DCard>
+											<DCard {...item}
+												imgHeight={200} 
+												link={{
+												pathname: '/detail',
+											    search: `?pid=${item.pid}`,
+											    state: item
+											}}></DCard>
 										</li>
 									)
 								})
@@ -153,12 +173,13 @@ export default class User extends React.Component {
 						</ul>
 					}
 					{ this.state.subs.length &&
-						<ul>
+						<ul className={ styles.listContainer +' '+
+							(this.isParamsActive('follow')? styles.listActive:'') }>
 							{
 								this.state.followList.map(item => {
 									return (
 										<li className={ styles.item } key={item.uid}>
-											<MCard></MCard>
+											<DCard imgHeight={200} {...item} link={`/user?uid=${item.uid}`}></DCard>
 										</li>
 									)
 								})
@@ -166,12 +187,13 @@ export default class User extends React.Component {
 						</ul>
 					}
 					{ this.state.favs.length &&
-						<ul>
+						<ul className={ styles.listContainer +' '+
+							(this.isParamsActive('fav')? styles.listActive:'') }>
 							{
 								this.state.favList.map(item => {
 									return (
 										<li className={ styles.item } key={item.pid}>
-											<Card wraperWidth={372} {...item}></Card>
+											<Card wraperWidth={200} {...item}></Card>
 										</li>
 									)
 								})

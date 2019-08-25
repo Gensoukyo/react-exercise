@@ -47,7 +47,7 @@ export default class Header extends React.Component {
 								<NavLink to="/upload" activeClassName={ styles.navActive }>
 									<i className="iconfont i-upload"></i>作品投稿
 								</NavLink>&nbsp;|&nbsp;
-								<NavLink to="/user/manage" activeClassName={ styles.navActive }>管理</NavLink>
+								<NavLink to="/user/upload" activeClassName={ styles.navActive }>管理</NavLink>
 							</li>
 							<li className={ styles.fav }>
 								<NavLink to="/user/fav" activeClassName={ styles.navActive }>

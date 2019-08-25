@@ -47,7 +47,7 @@ export default class Login extends React.Component {
 			.then(data => {
 				if (data.success) {
 					const globalStyle = {
-						height: params.h + 'px',
+						height: params.h,
 						background: `url(${data.data})`,
 						backgroundSize: 'cover'
 					}

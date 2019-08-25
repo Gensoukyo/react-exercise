@@ -66,7 +66,7 @@ export default class searchBar extends React.Component {
 	render() {
 		return (
 			<div className={ styles.wraper +' '+this.props.className }
-				style={ {width: this.props.width + 'px' } }
+				style={ {width: this.props.width } }
 			>
 				<form className={ styles.bar }
 					onSubmit={ this.handleSearch }
@@ -83,16 +83,20 @@ export default class searchBar extends React.Component {
 				<ul className={ styles.result +' '+this.state.listViewStyle }>
 					{
 						this.state.list.tags.map(item => (<li className={ styles.resultItem }
-							key={ `tag${item.id}` }
+							key={ `tag${item.tid}` }
 						>
-							<Link to={ `/search?tag=${item.id}` }>{ item.name }</Link>
+							<Link to={ `/search?tag=${item.tid}` }>{ item.name }</Link>
 						</li>)) 
 					}
 					{
 						this.state.list.pics.map(item => (<li className={ styles.resultItem }
-							key={ `pic${item.id}` }
+							key={ `pic${item.pid}` }
 						>
-							<Link to={ `/detail/${item.id}` }>{ item.name }</Link>
+							<Link to={{
+								pathname: '/detail',
+							    search: `?pid=${item.pid}`,
+							    state: item
+							}}>{ item.name }</Link>
 						</li>)) 
 					}
 				</ul>

@@ -1,12 +1,13 @@
-$Width: 372px;
 .collectionLink {
 	display: block;
-	width: $Width;
-	overflow: hidden;
+	width: 100%;
+	max-width: 365px;
 }
 
 .collectionImg {
 	width: 100%;
+	height: 100%;
+	object-fit: cover;
 	border-radius: 4px;
 }
 

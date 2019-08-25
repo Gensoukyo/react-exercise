@@ -1,0 +1,15 @@
+$tagColor: #999;
+$tagHoverColor: #666;
+
+.item {
+	display: inline;
+	line-height: 18px;
+    margin: 0 12px 0 0;
+    color: $tagColor;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.item:hover {
+	color: $tagHoverColor;
+}

@@ -37,13 +37,13 @@ export default class Aside extends React.Component {
 						</Link>
 					</li>
 					<li className={ styles.item } >
-						<Link to='/user/follow'>关注</Link>
+						<Link className={ styles.link } to='/user/follow'>关注</Link>
 					</li>
 					<li className={ styles.item } >
-						<Link to='/user/fav'>收藏</Link>
+						<Link className={ styles.link } to='/user/fav'>收藏</Link>
 					</li>
 					<li className={ styles.item } >
-						<Link to='/user/manage'>稿件</Link>
+						<Link className={ styles.link } to='/user/upload'>稿件</Link>
 					</li>
 				</ul>
 				<ul className={ styles.side }>
@@ -52,7 +52,7 @@ export default class Aside extends React.Component {
 						this.state.picList.map(item => {
 							return (
 								<li className={ styles.item } key={item.pid}>
-									<Card wraperWidth={197} imgWidth={97} {...item}></Card>
+									<Card wraperWidth={197} imgSize={97} {...item}></Card>
 								</li>
 							)
 						})

@@ -14,8 +14,8 @@ export default class Discovery extends React.Component {
 
 		const types = {
 			recommend:  (item) => (<Card wraperWidth={200} {...item}></Card>),
-			collection: (item) => (<DCard wraperWidth={372} {...item} link={`/tag?tid=${item.tid}`}></DCard>),
-			rank: (item) => (<Card wraperWidth={372} imgWidth={100} {...item}></Card>)
+			collection: (item) => (<DCard imgHeight={256} {...item} link={`/tag?tid=${item.tid}`}></DCard>),
+			rank: (item) => (<Card wraperWidth={372} imgSize={100} {...item}></Card>)
 		}
 		const queryUrls = {
 			recommend: 'getRecommendPicList',
@@ -103,7 +103,9 @@ export default class Discovery extends React.Component {
 						{
 							this.state.list.map(item => {
 								return (
-									<li className={ styles.item } key={item.pid}>
+									<li className={ styles.item }
+										key={item.pid}
+									>
 										{ this.state.component(item) }
 									</li>
 								)

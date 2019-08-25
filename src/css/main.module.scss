@@ -1,5 +1,6 @@
 $WIDTH: 1024px;
 $sideWidth: 215px;
+$gapWidth: 15px;
 
 .wraper {
 	width: $WIDTH - $sideWidth - 14px;
@@ -23,10 +24,10 @@ $sideWidth: 215px;
 .title {
 	width: 100%;
     font-size: 16px;
-    margin: 0 0 6px 6px;
+    margin: 0 0 6px $gapWidth;
 }
 
 .item {
 	display: inline-block;
-	margin: 6px;
+	margin: 8px $gapWidth;
 }

@@ -7,5 +7,22 @@
 </head>
 <body>
 	<div id="app"></div>
+	<script>
+		if (!sessionStorage.length) {
+		    localStorage.setItem('getSession', Date.now());
+		};
+		function storage(event) {
+		    if (event.key === 'getSession') {
+		        localStorage.setItem('setSession', JSON.stringify(sessionStorage));
+		        localStorage.removeItem('setSession');
+		    } else if (event.key === 'setSession' && !sessionStorage.length) {
+		        var data = JSON.parse(event.newValue);
+		        for (var key in data) {
+		            sessionStorage.setItem(key, data[key]);
+		        }
+		    }
+		}
+		window.addEventListener('storage', storage);
+	</script>
 </body>
 </html>

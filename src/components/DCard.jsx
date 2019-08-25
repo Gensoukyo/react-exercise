@@ -6,33 +6,42 @@ import styles from '../css/dCard.module.css'
 
 export default class DCard extends React.Component {
 	static propTypes = {
-		wraperWidth: PropTypes.number,
-		link: PropTypes.string
+		imgHeight: PropTypes.number,
+		link: PropTypes.oneOfType([
+		    PropTypes.string,
+		    PropTypes.object
+		])
 	};
 
 	constructor(props) {
 		super(props);
 
-		const wraperStyle = this.props.wraperWidth && {
-			width: this.props.wraperWidth + 'px'
-		}
+		const imgStyle = this.props.imgHeight? {
+			height: this.props.imgHeight
+		}:{}
 
 		this.state = {
-			wraperStyle
+			imgStyle
 		}
 	}
 
 	render() {
 		return (
-			<Link to={ this.props.link }
-				className={ styles.collectionLink }
-				style={ this.state.wraperWidth }
-			>
-				<img src={ this.props.url } alt={ this.props.name }
-					className={ styles.collectionImg }
-				/>
-				<p className={ styles.collectionName }>{ this.props.name }</p>
-			</Link>
+			<React.Fragment>
+				<Link to={ this.props.link }
+					className={ styles.collectionLink }
+					style={ this.state.imgStyle }
+				>
+					<img src={ this.props.url } alt={ this.props.name }
+						className={ styles.collectionImg }
+					/>
+				</Link>
+				<Link to={ this.props.link }
+					className={ styles.collectionLink }
+				>
+					<p className={ styles.collectionName + ' textOverflow' }>{ this.props.name }</p>
+				</Link>
+			</React.Fragment>
 		);
 	}
 }
