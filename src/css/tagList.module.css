@@ -5,11 +5,14 @@ $tagHoverColor: #666;
 	display: inline;
 	line-height: 18px;
     margin: 0 12px 0 0;
-    color: $tagColor;
     font-size: 14px;
     word-break: break-all;
+
+    & a {
+    	color: $tagColor;
+    }
 }
 
-.item:hover {
+.item:hover a {
 	color: $tagHoverColor;
 }

@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 import UCard from '../components/UCard.jsx'
 import TagList from '../components/TagList.jsx'
 import Header from '../view/Header.jsx'
+import Card from '../components/Card.jsx'
+import DCard from '../components/DCard.jsx'
+
 import styles from '../css/detail.module.css'
 
 export default class Detail extends React.Component {
@@ -13,18 +16,23 @@ export default class Detail extends React.Component {
 
 		this.state = {
 			pic: this.props.location.state,
-			owner: null
+			owner: null,
+			uploads: []
 		}
 
 		this.fetchThePic = this.fetchThePic.bind(this);
 		this.fetchTheUser = this.fetchTheUser.bind(this);
+		this.fetchTheRelateUserPic = this.fetchTheRelateUserPic.bind(this);
 	}
 
 	componentDidMount() {
 		if (!this.state.pic) {
-			this.fetchThePic().then(this.fetchTheUser);
+			this.fetchThePic()
+				.then(this.fetchTheUser)
+				.then(this.fetchTheRelateUserPic);
 		} else {
-			this.fetchTheUser();
+			this.fetchTheUser()
+				.then(this.fetchTheRelateUserPic);
 		}
 	}
 
@@ -38,6 +46,20 @@ export default class Detail extends React.Component {
 						owner: data.data
 					});
 				}
+				return data.data;
+			})
+	}
+
+	fetchTheRelateUserPic(user) {
+		const id = (user.uploads || []).toString();
+		return this.$axios.postPicListById({ id })
+			.then(data => {
+				if (data.success) {
+					this.setState({
+						uploads: data.data
+					});
+				}
+				return data.data;
 			})
 	}
 
@@ -84,6 +106,21 @@ export default class Detail extends React.Component {
 								</div>
 							}
 						</div>
+						{ this.state.uploads.length > 5 &&
+							<ul className={ styles.uploadList }>
+								{
+									this.state.uploads.map(item => {
+										return (
+											<li className={ styles.uploadItem } key={item.pid}>
+												<Card {...item}
+													wraperWidth={140} 
+												></Card>
+											</li>
+										)
+									})
+								}
+							</ul>
+						}
 					</main>
 					<aside className={ styles.side }>
 						{ this.state.owner &&
@@ -91,6 +128,23 @@ export default class Detail extends React.Component {
 								<UCard imgSize={50} {...this.state.owner} ></UCard>
 							</div>
 						}
+						<ul className={ styles.displayList }>
+							<li className={ styles.displayTitle }>最新作品</li>
+							{
+								this.state.uploads.slice(0,3).sort().map(item => {
+									return (
+										<li className={ styles.displayItem } key={item.pid}>
+											<DCard {...item}
+												link={{
+												pathname: '/detail',
+											    search: `?pid=${item.pid}`,
+											    state: item
+											}}></DCard>
+										</li>
+									)
+								})
+							}
+						</ul>
 					</aside>
 				</div>
 			</div>

@@ -1,4 +1,5 @@
 $WIDTH: 1224px;
+$imgSize: 140px;
 
 .wraper {
 	width: $WIDTH;
@@ -14,7 +15,25 @@ $WIDTH: 1224px;
 
 .side {
 	margin-left: 75%;
-    padding: 0 24px;
+    padding: 0 20px;
+}
+
+.displayList {
+	width: 80%;
+	margin: 20px auto;
+}
+
+.displayTitle {
+	margin: 15px auto;
+}
+
+.displayItem {
+	display: block;
+	max-width: 250px;
+	height: 0;
+    padding-bottom: 100%;
+	margin: 15px auto;
+	overflow: hidden;
 }
 
 .presentation {
@@ -26,7 +45,6 @@ $WIDTH: 1224px;
     line-height: 0;
     min-width: 200px;
     min-height: 480px;
-    border-radius: 8px 8px 0 0;
     background: rgb(250, 250, 250);
 }
 
@@ -37,7 +55,7 @@ $WIDTH: 1224px;
 }
 
 .picInfo {
-	padding: 0 15px;
+	padding: 0 10%;
 	margin: 12px auto;
 }
 
@@ -75,4 +93,20 @@ $WIDTH: 1224px;
 	&:hover{
 		text-decoration: underline;
 	}
+}
+
+.uploadList {
+	margin: 12px auto;
+	height: $imgSize + 20px;
+	padding: 10px 0;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+
+.uploadItem {
+	display: inline-block;
+	width: $imgSize;
+	margin: 0 4px;
+	overflow: hidden;
 }
