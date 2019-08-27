@@ -17,7 +17,10 @@ const config = {
 	postUserSub: '/user/sub',
 	postPicListById: '/pic/id',
 	postUserListById: '/user/id',
-	postTagListById: '/tag/id'
+	postTagListById: '/tag/id',
+	postCommentListById: '/comment/id',
+
+	postReply: '/reply'
 }
 
 for (let [name, path] of Object.entries(config)) {

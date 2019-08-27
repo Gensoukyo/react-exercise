@@ -121,6 +121,8 @@ export default class Detail extends React.Component {
 								}
 							</ul>
 						}
+						<hr/>
+						
 					</main>
 					<aside className={ styles.side }>
 						{ this.state.owner &&

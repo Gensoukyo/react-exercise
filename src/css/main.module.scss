@@ -19,6 +19,10 @@ $gapWidth: 15px;
 	border: 1px solid #d6dee5;
 	border-radius: 5px;
 	overflow: hidden;
+
+	&.head {
+		min-height: 750px;
+	}
 }
 
 .title {
@@ -29,5 +33,12 @@ $gapWidth: 15px;
 
 .item {
 	display: inline-block;
+	width: 160px;
+	margin: 8px $gapWidth;
+}
+
+.spItem {
+	display: inline-block;
+	width: 350px;
 	margin: 8px $gapWidth;
 }

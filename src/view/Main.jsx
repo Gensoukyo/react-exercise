@@ -53,13 +53,13 @@ export default class Main extends React.Component {
 						<p>{ this.state.announce }</p>
 					</div>
 				}
-				<ul className={ styles.container }>
+				<ul className={ styles.container +' '+ styles.head }>
 					<li className={ styles.title }>推荐作品</li>
 					{
 						this.state.recommendPicList.map(item => {
 							return (
 								<li className={ styles.item } key={item.pid}>
-									<Card wraperWidth={160} {...item}></Card>
+									<Card {...item}></Card>
 								</li>
 							)
 						})
@@ -71,7 +71,7 @@ export default class Main extends React.Component {
 						this.state.freshPicList.map(item => {
 							return (
 								<li className={ styles.item } key={item.pid}>
-									<Card wraperWidth={160} {...item}></Card>
+									<Card {...item}></Card>
 								</li>
 							)
 						})
@@ -82,7 +82,7 @@ export default class Main extends React.Component {
 					{
 						this.state.specialPicList.map(item => {
 							return (
-								<li className={ styles.item } key={item.tid}>
+								<li className={ styles.spItem } key={item.tid}>
 									<DCard {...item} link={ `/tag?tid=${item.tid}` }></DCard>
 								</li>
 							)

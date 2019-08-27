@@ -6,34 +6,27 @@ import styles from '../css/card.module.css'
 
 export default class Card extends React.Component {
 	static propTypes = {
-		wraperWidth: PropTypes.number,
 		imgSize: PropTypes.number
 	};
 
 	constructor(props) {
 		super(props);
 
-		const wraperStyle = this.props.wraperWidth && {
-			width: this.props.wraperWidth
-		}
 		const imgStyle = {
-			float: 'left',
-			width: this.props.imgSize || this.props.wraperWidth,
-			height: this.props.imgSize || this.props.wraperWidth,
-			marginRight: 8
+			width: this.props.imgSize,
+			height: this.props.imgSize
 		}
 		const nameStyle = this.props.imgSize? {
-			width: (this.props.wraperWidth - this.props.imgSize -8),
+			marginLeft: this.props.imgSize + 8,
 			textAlign: 'left',
-			boxSizing: 'border-box'
+			height: this.props.imgSize
 		}:{
-			width: '100%'
+			clear: 'both'
 		}
 		this.state = {
 			user: JSON.parse(window.sessionStorage.getItem('user')),
 
 			defaultUrl: '//wx4.sinaimg.cn/mw690/006RXp8Mgy1g64zq9z8ldg306s06sqgc.gif',
-			wraperStyle: wraperStyle,
 			imgStyle: imgStyle,
 			nameStyle: nameStyle,
 
@@ -60,7 +53,7 @@ export default class Card extends React.Component {
 
 	render() {
 		return (
-			<div className={ styles.card } style={ this.state.wraperStyle }>
+			<div className={ styles.card }>
 				<Link to={{
 					pathname: '/detail',
 				    search: `?pid=${this.props.pid}`,
@@ -75,25 +68,24 @@ export default class Card extends React.Component {
 						onClick={ this.handleFav }
 					></i>
 				</Link>
-				<Link to={{
-					pathname: '/detail',
-				    search: `?pid=${this.props.pid}`,
-				    state: this.props
-				}}
-					className={ styles.name +' '+ styles.firstName + ' textOverflow' }
-					style={ this.state.nameStyle }
-				>{ this.props.name }</Link>
-				<div className={ styles.nameWraper }
-					style={ this.state.nameStyle }
-				>
-					<span className={ styles.nameby }>by</span>
-					<Link to={ `/user?uid=${this.props.uid}` }
-						className={ styles.name + ' textOverflow' }
-					> { this.props.author } </Link>
+				<div style={ this.state.nameStyle }>
+					<Link to={{
+						pathname: '/detail',
+					    search: `?pid=${this.props.pid}`,
+					    state: this.props
+					}} className={ styles.name +' '+ styles.firstName + ' textOverflow' }
+					>{ this.props.name }</Link>
+					<div className={ styles.nameWraper }
+					>
+						<span className={ styles.nameby }>by</span>
+						<Link to={ `/user?uid=${this.props.uid}` }
+							className={ styles.nameAs + ' textOverflow' }
+						> { this.props.author } </Link>
+					</div>
+					{ this.props.imgSize &&
+						<span className={ styles.rank }>{ this.props.order }</span>
+					}
 				</div>
-				{ this.state.imgStyle && this.props.order &&
-					<span className={ styles.rank }>{ this.props.order }</span>
-				}
 			</div>
 		);
 	}

@@ -23,8 +23,8 @@ export default class Login extends React.Component {
 			jmpName,
 			submitType,
 
-			username: '',
-			password: '',
+			username: 'test',
+			password: 'dddddd',
 
 			globalStyle: null
 		};

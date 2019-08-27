@@ -42,11 +42,17 @@ export default class UCard extends React.Component {
 	render() {
 		return (
 			<div className={ styles.wraper }>
-				<img className={ styles.avatar }
-					src={ this.props.avatar }
-					alt={ this.props.name }
-					style={ this.state.imgStyle }
-				/>
+				<Link to={{
+						pathname: '/user',
+					    search: `?uid=${this.props.uid}`,
+					    state: this.props
+					}}>
+					<img className={ styles.avatar }
+						src={ this.props.avatar }
+						alt={ this.props.name }
+						style={ this.state.imgStyle }
+					/>
+				</Link>
 				<h1 className={ styles.name }>{ this.props.name }</h1>
 				{ !this.props.inner &&
 					<div className={ styles.subBtn }
